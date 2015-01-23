@@ -36,7 +36,8 @@ BEM.decl({name: 'i-www-server', baseBlock: 'i-server'}, null, {
 
         //handling uncaught exception
         process.on('uncaughtException', function (err) {
-            console.error('UNCAUGHT EXCEPTION:', err.stack);
+            console.error('UNCAUGHT EXCEPTION');
+            console.error(err);
             //gracefull exit
             httpServer.close(function () {
                 process.exit(1);
@@ -86,7 +87,7 @@ BEM.decl({name: 'i-www-server', baseBlock: 'i-server'}, null, {
         var fs = require('fs'),
             cluster = require('cluster'),
             isNumber = typeof socket === 'number';
-        
+
         if (!isNumber) {
             try {
                 fs.unlinkSync(socket);

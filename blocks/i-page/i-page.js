@@ -79,7 +79,11 @@ BEM.DOM.decl('i-page', null, {
                     this.getUpdateNode(),
                     html
                 );
-            } catch (ex) { console.error(ex); }
+            } catch (ex) {
+                setTimeout(function () {
+                    throw ex;
+                });
+            }
             jQuery('body, html').scrollTop(0);
             return html;
         }.bind(this));

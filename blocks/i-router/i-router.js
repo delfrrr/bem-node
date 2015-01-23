@@ -123,10 +123,13 @@
 
         /**
          * Reloading page
+         * @param {Error} [err] to output
          */
-        reload: function (e) {
-            if (e) {
-                console.error(e instanceof Error ? e.stack : e);
+        reload: function (err) {
+            if (err) {
+                setTimeout(function () {
+                    throw err;
+                });
             }
             setTimeout(function () {
                 location.reload();
